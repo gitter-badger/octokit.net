@@ -1,7 +1,18 @@
 init:
   - git config --global core.autocrlf input
-build_script:
-  - cmd: build.cmd BuildApp
-  - cmd: build.cmd UnitTests
-  - cmd: build.cmd ConventionTests
-test: off
+version: 1.0.{build}
+environment:
+  xamarin_email: 'secure: avU5cPDrc/gAPazTL9iEQl0WjVHvDzQNa7FrfCORCzM='
+  xamarin_password: 'secure: p/s9JE8SqFeXttkRlWoMFw=='
+before_build:
+- ps: >-
+    Register-XamarinLicense -Email $env:xamarin_email -Password $env:xamarin_password -Product iOS
+
+
+    Register-XamarinLicense -Email $env:xamarin_email -Password $env:xamarin_password -Product Android
+build:
+  project: Octokit-XamarinStudio.sln
+  verbosity: minimal
+after_build:
+- ps: Unregister-XamarinLicense -Email $env:xamarin_email -Password $env:xamarin_password
+on_finish: []
