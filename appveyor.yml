@@ -1,6 +1,5 @@
 init:
   - git config --global core.autocrlf 
-inputversion: 1.0.{build}
 environment:
   xamarin_email: 'secure: avU5cPDrc/gAPazTL9iEQl0WjVHvDzQNa7FrfCORCzM='
   xamarin_password: 'secure: p/s9JE8SqFeXttkRlWoMFw=='
