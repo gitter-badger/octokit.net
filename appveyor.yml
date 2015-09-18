@@ -1,12 +1,11 @@
 init:
   - git config --global core.autocrlf 
 environment:
-  xamarin_email: 'secure: avU5cPDrc/gAPazTL9iEQl0WjVHvDzQNa7FrfCORCzM='
-  xamarin_password: 'secure: p/s9JE8SqFeXttkRlWoMFw=='
+  xamarin_email: 'naveensrinivasan@yahoo.com'
+  xamarin_password: 'password'
 before_build:
 - ps: >-
     Register-XamarinLicense -Email $env:xamarin_email -Password $env:xamarin_password -Product iOS
-
 
     Register-XamarinLicense -Email $env:xamarin_email -Password $env:xamarin_password -Product Android
 build:
